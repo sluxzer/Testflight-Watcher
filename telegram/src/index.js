@@ -3,7 +3,22 @@ import { checkApp } from "./checker.js";
 import { sendTelegram } from "./telegram.js";
 import { buildURL } from "./utils.js";
 
+const args = process.argv.slice(2);
+
 const lastNotify = {};
+
+async function healthCheck() {
+  console.log("🔍 Running health check...");
+
+  try {
+    await sendTelegram("✅ TestFlight Sniper is working correctly!");
+    console.log("✅ Telegram test message sent successfully");
+  } catch (e) {
+    console.error("❌ Failed to send Telegram message:", e.message);
+  }
+
+  process.exit(0);
+}
 
 function shouldNotify(app) {
   const now = Date.now();
@@ -15,6 +30,10 @@ function shouldNotify(app) {
   }
 
   return false;
+}
+
+if (args.includes("--health")) {
+  await healthCheck();
 }
 
 async function run() {
