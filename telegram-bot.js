@@ -1,8 +1,8 @@
 // TestFlight Sniper (Node.js + Telegram)
 
 const APPS = [
-  { id: "C1a3MRG4", name: "Example Full App" },
-  { id: "PMfu4nmW", name: "Example Open App" }
+  { id: "C1a3MRG4", name: "Facebook" }, //Usually Close
+  { id: "PMfu4nmW", name: "Example Open App" } // AdGuard
 ];
 
 const BOT_TOKEN = "YOUR_BOT_TOKEN";
